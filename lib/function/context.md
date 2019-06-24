@@ -207,7 +207,7 @@ function foo () {
 > * 一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，执行事件对应的回调。
 > * 主线程把当前的事件执行完成之后,会再去读取任务队列,如此反复重复执行,就形成了事件循环
 
-![调用栈](https://user-gold-cdn.xitu.io/2018/1/16/160fcd26fb5bb968?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![调用栈](https://raw.githubusercontent.com/wchaochao/images/master/gitbook-javascript-grammar/callstack.png)
 
 ## 垃圾收集
 
@@ -215,3 +215,4 @@ function foo () {
 
 * 标记清除：从根对象开始标记所有可到达的变量，释放不可到达的变量内存
 * 解除值的引用能让值脱离执行环境，以便垃圾收集器下次运行时将其回收
+
