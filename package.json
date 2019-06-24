@@ -1,0 +1,27 @@
+{
+  "name": "gitbook-javascript-grammar",
+  "version": "1.0.0",
+  "description": "JavaScript语法系列",
+  "main": "index.js",
+  "scripts": {
+    "init": "gitbook init",
+    "build": "gitbook build",
+    "serve": "gitbook serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wchaochao/gitbook-javascript-grammar.git"
+  },
+  "keywords": [
+    "gitbook"
+  ],
+  "author": "wchaochao",
+  "bugs": {
+    "url": "https://github.com/wchaochao/gitbook-javascript-grammar/issues"
+  },
+  "homepage": "https://github.com/wchaochao/gitbook-javascript-grammar#readme",
+  "devDependencies": {
+    "gitbook": "^3.2.2",
+    "gitbook-cli": "^2.3.0"
+  }
+}
