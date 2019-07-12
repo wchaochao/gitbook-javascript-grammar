@@ -40,7 +40,7 @@
 
 * [对象](lib/object/object.md)
 * 面向对象编程
-* 数组
+* [数组](lib/object/array.md)
 * 正则表达式
 * 异步操作
 * 编程风格
