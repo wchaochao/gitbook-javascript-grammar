@@ -39,10 +39,10 @@
 ## 对象篇
 
 * [对象](lib/object/object.md)
-* 面向对象编程
 * [数组](lib/object/array.md)
-* 正则表达式
-* 异步操作
-* 编程风格
-* 严格模式
-* Unicode字符集
+* [正则表达式](lib/object/regexp.md)
+* [面向对象编程](lib/object/oop.md)
+* [异步操作](lib/object/async.md)
+* [编程风格](lib/object/style.md)
+* [严格模式](lib/object/strict.md)
+* [Unicode字符集](lib/object/unicode.md)
