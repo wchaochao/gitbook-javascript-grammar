@@ -42,6 +42,7 @@
 * [数组](lib/object/array.md)
 * [Date](lib/object/date.md)
 * [正则表达式](lib/object/regexp.md)
+* [JSON](lib/object/json.md)
 * [面向对象编程](lib/object/oop.md)
 * [异步操作](lib/object/async.md)
 * [编程风格](lib/object/style.md)
