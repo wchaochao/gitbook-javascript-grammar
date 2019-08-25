@@ -6,8 +6,18 @@
 
 ## 属性
 
+key/value对
+
+### 组成
+
 * 属性名：标识符、关键字、保留字、String字面量、Number字面量都可为属性名
-* 属性值：可为任意类型
+* 属性值：可为任意类型，为函数时称为方法
+
+### 分类
+
+* 自身属性
+* 继承属性
+* 可枚举属性
 
 ## 属性描述符
 
@@ -41,8 +51,8 @@ obj.defineProperty('a', {
 
 | 属性描述 | 类型 | 默认值 | 描述 |
 | --- | --- | --- | --- |
-| [[Get]] | Function \| Undefined | undefined | 获取属性时执行的函数，参数为空，返回值为属性值 |
-| [[Set]] | Function \| Undefined | undefined | 设置属性时执行的函数，参数为设置的值 |
+| [[Get]] | Function、Undefined | undefined | 获取属性时执行的函数，参数为空，返回值为属性值 |
+| [[Set]] | Function、Undefined | undefined | 设置属性时执行的函数，参数为设置的值 |
 | [[Enumerable]] | Boolean | false | 属性是否可枚举，`for/in, Object.keys, JSON.stringify`中遍历可枚举属性 |
 | [[Configurable]] | Boolean | false | 属性是否可配置，为false时属性不可删除、其他属性描述一般不能修改 |
 
@@ -473,6 +483,6 @@ Object.keys(obj) // 返回对象本身的所有可枚举属性名组成的数组
 
 ## 遍历属性
 
-```
+```javascript
 for/in // 遍历对象及其原型链上所有可枚举的属性
 ```
