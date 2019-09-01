@@ -4,20 +4,32 @@
 
 ---
 
+属性的集合
+
 ## 属性
 
 key/value对
 
-### 组成
+### key
 
-* 属性名：标识符、关键字、保留字、String字面量、Number字面量都可为属性名
-* 属性值：可为任意类型，为函数时称为方法
+属性名
 
-### 分类
+* String值：标识符名、String字面量、Number字面量为属性名时会自动转换为String值
+* Symbol值：Symbol值也可作为属性名
+* 索引：[0, 2^53 - 1]的整数，数组的索引为[0, 2^32 - 1]的整数
 
-* 自身属性
-* 继承属性
-* 可枚举属性
+### value
+
+属性值
+
+* 属性值可为任意值
+* 属性值为函数时称为方法
+
+## 属性分类
+
+* 自身属性：对象自身的属性
+* 继承属性：对象通过原型链继承的属性
+* 可枚举属性：属性中[[Enumerable]]为true的属性
 
 ## 属性描述符
 
@@ -71,7 +83,7 @@ obj.defineProperty('a', {
 
 ### 默认描述
 
-* 内置对象的内置属性的`writable、enumerable、configurable`都为`false`
+* 内置对象的内置属性的`writable、enumerable、configurable`一般都为`false`
 * var声明的变量的`writable、enumerable`为`true`，`configurable`为`false`
 * 直接添加的属性的`writable、enumerable、configurable`都为`true`
 
@@ -81,12 +93,12 @@ obj.defineProperty('a', {
 
 | 内部属性 | 类型 | 描述 |
 | --- | --- | --- |
-| [[Class]] | String | 对象种类 |
-| [[Prototype]] | Object \| Null | 对象的原型<br/>原型的数据属性会被继承，用于[[Get]]<br/>原型的访问器属性会被继承，用于[[Get]]和[[Put]] |
+| [[Class]] | String | 对象类型 |
+| [[Prototype]] | Object &#124; Null | 对象的原型<br/>原型的数据属性会被继承，用于[[Get]]<br/>原型的访问器属性会被继承，用于[[Get]]和[[Put]] |
 | [[Extensible]] | Boolean | 对象是否可扩展，为false时不可添加属性、不可修改[[Class]]和[[Prototype]] |
-| [[GetOwnProperty]] | (propertyName: String) => Property Descriptor \| Undefined | 获取自身属性的属性描述符 |
+| [[GetOwnProperty]] | (propertyName: String) => Property Descriptor &#124; Undefined | 获取自身属性的属性描述符 |
 | [[DefineOwnProperty]] | (propertyName: String, value: Property Descriptor, flag: Boolean) | 设置自身属性的属性描述符, flag控制错误处理 |
-| [[GetProperty]] | (propertyName: String) => Property Descriptor \| Undefined | 获取自身属性或继承属性的属性描述符 |
+| [[GetProperty]] | (propertyName: String) => Property Descriptor &#124; Undefined | 获取自身属性或继承属性的属性描述符 |
 | [[HasProperty]] | (propertyName: String) => Boolean | 是否是自身属性或继承属性 |
 | [[Get]] | (propertyName: String) => any | 获取自身属性或继承属性的属性值 |
 | [[CanPut]] | (propertyName: String) => Boolean | 能否设置属性 |
@@ -451,7 +463,7 @@ o.[[DefaultValue]]() // 1
 | [[BoundThis]] | any | 通过Function.prototype.bind方法创建的函数绑定的this值（Function对象） |
 | [[BoundArguments]] | List of any | 通过Function.prototype.bind方法创建的函数绑定的参数值（Function对象） |
 | [[Construct]] | (argList: List of any) => Object | 构建实例对象，通过new调用（Function对象） |
-| [[Call]] | (thisArg: any, argList: List of any) => any \| Reference | 函数调用，通过()调用（Function对象） |
+| [[Call]] | (thisArg: any, argList: List of any) => any &#124; Reference | 函数调用，通过()调用（Function对象） |
 | [[HasInstance]] | (instance: any) => Boolean | 是否是构造器的实例（Function对象） |
 | [[Match]] | (str: String, index: Number) => MatchResult | 正则匹配（RegExp对象） |
 | [[ParameterMap]] | Object | 共享的形参（Arguments对象） |
