@@ -154,13 +154,16 @@ Property Descriptor {
 ```javascript
 /*
  * 非自身属性，添加属性
- *     对象不可扩展时，不能添加属性
+ *    O不可扩展，根据Throw决定是否抛出TypeError或返回false
+ *    O可扩展，根据Desc添加数据属性或访问器属性，返回true
  * 自身属性，修改属性的属性描述符
- *    自身属性的Configurable为false时
- *        Configurable、Enumberable不能修改
- *        不能由一种属性描述符改为另一种属性描述符
- *        数据属性描述符Writable为false时, Writable和Value都不能修改
- *        访问器属性描述符的Get和Set不能修改
+ *   能修改，用Desc里的属性描述符特性覆盖自身的，返回true
+ *   不能修改，根据Throw决定是否抛出TypeError或返回false
+ *      自身属性的[[Configurable]]为false时
+ *          [[Configurable]]、[[Enumberable]]不能修改
+ *          不能由一种属性描述符改为另一种属性描述符
+ *          数据属性描述符[[Writable为[[false]]时, [[Writable]]和[[Value]]都不能修改
+ *          访问器属性描述符的[[Get]]和Set]]不能修改
  */
 ```
 
@@ -286,8 +289,10 @@ o.[[HasProperty]]('toString') // true
  * 获取自身属性或继承属性的属性描述符
  *     不存在，返回undefined
  *     存在，根据描述符类型返回属性值
- *         数据属性，返回[[Value]]
- *         访问器属性，调用[[Get]]方法
+ *         数据属性，返回[[Value]]值
+ *         访问器属性
+ *             [Get]]不存在，返回undefined
+ *             [[Get]]存在，调用[[Get]]方法，this为对象，参数为空
  */
 ```
 
@@ -376,7 +381,7 @@ o.[[Put]]('a', 3, true) // {a: 3, set p}
 o.[[Put]]('p', 3, true) // {a: 3, set p}
 
 // 继承的数据属性，添加属性
-o.[[Put]]('toString', 5, true) // {a: 1, toString: 5}
+o.[[Put]]('toString', 5, true) // {a: 1, toString: 5, set p}
 ```
 
 ### [[Delete]] (P, Throw)
@@ -386,9 +391,9 @@ o.[[Put]]('toString', 5, true) // {a: 1, toString: 5}
 ```javascript
 /*
  * 非自身属性，直接返回true
- * 自身属性，判断是否可删除
- *     可删除，删除属性并返回true
- *     不可删除
+ * 自身属性，判断是否可配置
+ *     可配置，删除属性并返回true
+ *     不可配置
  *         Throw为true抛出TypeError
  *         Throw为false返回false
  */
@@ -408,10 +413,10 @@ Object.defineProperty(o, 'b', {
 // 非自身属性
 o.[[Delete]]('c', true) // true
 
-// 可删除的自身属性
+// 可配置的自身属性
 o.[[Delete]]('a', true) // true
 
-// 不可删除的自身属性
+// 不可配置的自身属性
 o.[[Delete]]('b', true) // TypeError
 ```
 
